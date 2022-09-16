@@ -1,0 +1,7 @@
+
+- hosts: k8s  
+  tasks: 
+    - name: copy deployment manifest files   
+      copy: src=app.yml dest=/home/ubuntu/myapp.yml    
+    - name: deploy the web application 
+      shell: kubectl apply -f /home/ubuntu/myapp.yml  
