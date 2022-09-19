@@ -21,7 +21,7 @@
 	</span>
 	<span style="font-weight: bold;">
 		Landmark Technology, 
-		Toronto, Canada
+		Toronto, Canada, North America.
 		+1 437 215 2483,
 		mylandmarktech@gmail.com
 		<br>
