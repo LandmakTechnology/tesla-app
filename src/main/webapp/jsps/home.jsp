@@ -9,7 +9,7 @@
 </head>
 </head>
 <body>
-<h1 align="center">Landmark Technology - Leaders in Software Delivery and DevOps Automation</h1>
+<h1 align="center">Landtoba Technology - Leaders in Software Delivery and DevOps Automation</h1>
 <h2 align="center"> Welcome to Landmark Technology.......We have a demo on DevOps E Degree with Linux and AWS  on Sunday Oct 9, 2012 at 3PM EST fou our new batch. 
 	Landmark Technology Tesla web application project2. 
 	</h2>
