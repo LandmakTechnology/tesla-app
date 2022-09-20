@@ -5,7 +5,7 @@
 	<groupId>com.mt</groupId>
 	<artifactId>maven-web-application</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.2-SNAPHOT</version>
+	<version>0.0.6-SNAPHOT</version>
 	
 	<name>maven-web-application</name>
 
@@ -96,7 +96,7 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://44.204.38.123:8081/repository/tesla-releases/</url> 
+	   
 	    </repository>
 	    
 	    <snapshotRepository>
