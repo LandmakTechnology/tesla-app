@@ -11,9 +11,9 @@
 <body>
 <h1 align="center">Landmark Technology - Leaders in Software Delivery and DevOps Automation</h1>
 <h2 align="center"> Welcome to Landmark Technology.......We have a demo on DevOps E Degree with Linux and AWS  on Sunday Oct 9, 2022 at 3PM EST for our new batch. 
-	Landmark Technology Tesla web application project2. 
+	Landmark Technology Tesla web application project10, God bless us all, now and forever, Amen!!!
 	</h2>
-	<h2 align="center" >DevOps is good. JESUS IS LORD. I AM BLESSED. Production</h2>
+	<h2 align="center" >DevOps is good. JESUS IS LORD. Amen</h2>
 <hr>
 <div style="text-align: center;">
 	<span>
@@ -21,7 +21,7 @@
 	</span>
 	<span style="font-weight: bold;">
 		Landmark Technology, 
-		Toronto, Canada
+		Toronto, Canada, North America.
 		+1 437 215 2483,
 		mylandmarktech@gmail.com
 		<br>
