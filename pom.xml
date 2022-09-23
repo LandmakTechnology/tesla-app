@@ -96,13 +96,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://44.204.81.24:8081/repository/master-releases/</url> 
+	      <url>http://44.204.81.24:8081/repository/Master-releases/</url> 
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://44.204.81.24:8081/repository/master-snapshot/</url>
+	      <url>http://44.204.81.24:8081/repository/Master-snapshot/</url>
 	    </snapshotRepository>
 	</distributionManagement>
 	
