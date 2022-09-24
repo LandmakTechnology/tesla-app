@@ -1,0 +1,35 @@
+node{
+   def mavenHome = tool name: 'maven3.8.6'
+  stage('1cloneCode'){
+    git "https://github.com/KingToba/tesla-app.git"
+  }
+  
+  stage('2test and build'){
+   sh "${mavenHome}/bin/mvn clean package"
+  }
+  
+  stage('3codeQuality'){
+    sh "${mavenHome}/bin/mvn sonar:sonar"
+  }
+  stage('4uploadArtifacts'){
+    sh "${mavenHome}/bin/mvn deploy"
+  }
+  stage('5deploy2UAT'){
+    sh "echo 'deploy to UAT'  "
+    deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://3.98.55.102:8080/')], contextPath: null, war: 'target/*war'
+}
+stage('6approvalGate'){
+    sh "echo 'ready for review' "
+    timeout(time:5, unit:'DAYS') {
+    input message: 'Application ready for deployment, Please review and approve'
+    }
+}
+    stage('7deploy2Prod'){
+      deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://3.98.55.102:8080/')], contextPath: null, war: 'target/*war'   
+}
+stage('8emailNotification'){
+    emailext body: '''Hi all
+check build status.
+landmark tech''', recipientProviders: [contributor(), buildUser()], subject: 'build status', to: 'oloruntobaoloyede@gmail.com'
+}
+}
