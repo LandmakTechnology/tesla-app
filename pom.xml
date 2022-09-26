@@ -20,13 +20,25 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://54.176.76.14:9000/</sonar.host.url>
+		<sonar.host.url>http://172.31.20.97:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>admin</sonar.password>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+	<!-- 
+	<repository>
+	    <id>nexus</id>
+	      <name>tesla proxy Repo</name>
+	      <url>http://44.211.74.239:8191/repository/tesla-proxy/</url> 
+	    </repository>
 
+	<repository>
+	    <id>nexus</id>
+	      <name>tesla remote Repo</name>
+	      <url>http://44.211.74.239:8191/repository/tesla-remote/</url> 
+	    </repository>
+	-->
 	<dependencies>
 		
 		<dependency>
@@ -96,13 +108,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://52.53.227.31:8191/landmark/repository/tesla-fe-releases/</url> 
+	      <url>http://44.211.74.239:8191/repository/tesla-releases/</url> 
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://52.53.227.31:8191/landmark/repository/tesla-fe-snapshots/</url>
+	      <url>http://44.211.74.239:8191/repository/tesla-snapshots/</url>
 	    </snapshotRepository>
 	</distributionManagement>
 	
