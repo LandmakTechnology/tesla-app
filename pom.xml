@@ -29,13 +29,13 @@
 	
 	<repositories>
 	<repository>
-	    <id>nexus</id>
+	    <id>proxy</id>
 	      <name>tesla proxy Repo</name>
 	      <url>http://44.211.74.239:8191/repository/tesla-proxy/</url> 
 	    </repository>
 
 	<repository>
-	    <id>nexus</id>
+	    <id>remote</id>
 	      <name>tesla remote Repo</name>
 	      <url>http://44.211.74.239:8191/repository/tesla-remote/</url> 
 	    </repository>
