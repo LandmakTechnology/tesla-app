@@ -35,7 +35,7 @@
 	    </repository>
 
 	<repository>
-	    <id>remote</id>
+	    <id>nexus</id>
 	      <name>tesla remote Repo</name>
 	      <url>http://44.211.74.239:8191/repository/tesla-remote/</url> 
 	    </repository>
