@@ -1,0 +1,60 @@
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "maven3.6.3" and add it to the path.
+        maven "maven3.6.3"
+    }
+
+    stages {
+        stage('1Cloning') {
+            steps {
+                // Get some code from a GitHub repository
+                sh "echo 'fly with me to paris with a cloning hub'"
+                git "https://github.com/DezeanyaEnterprise/tesla-app.git"
+                }
+        }    
+        stage('2Test and Build') {
+            steps {
+                sh "echo 'Test and build war packages'"
+                sh "mvn clean package"
+               }
+        }  
+        stage('3CodeQuality') {
+            steps {
+                sh "echo 'Only 3 code smells 0 bugs'"
+                sh "mvn sonar:sonar"
+               }
+        } 
+        stage('4UploadArtificate') {
+            steps {
+                sh "echo 'Safe deploy'"
+                sh "mvn deploy"
+               }
+        } 
+        stage('5DeployToUAT') {
+            steps {
+                deploy adapters: [tomcat8(credentialsId: 'tomcat-credentials', path: '', url: 'http://3.17.59.10:8080/')], contextPath: null, war: 'target/*war'
+            }
+        }
+    }
+    post {
+        success {
+            emailext body: '''Hi All,
+
+Build was successful. Congrats!
+
+Thanks,
+Dennis E.''', recipientProviders: [buildUser(), developers(), previous()], subject: 'success', to: 'ezeanyadennis@gmail.com'
+        }
+        failure {
+            emailext body: '''Hi All,
+
+Build failed. Dev team, please check JUnit test cases.
+
+Thanks,
+Dennis E.''', recipientProviders: [buildUser(), contributor(), previous(), developers()], subject: 'failure', to: 'ezeanyadennis@gmail.com'
+            
+        }
+    }
+}
