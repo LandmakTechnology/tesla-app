@@ -95,13 +95,13 @@
 		
 	    <repository>
 	      <id>nexus</id>
-	      <name>Landmark Technologies Releases Nexus Repository</name>
+	      <name>http://54.172.219.171:4000/repository/DJ-Release/</name>
 
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Landmark Technologies Snapshot Nexus Repository </name>
+	      <name>http://54.172.219.171:4000/repository/DJ-Snapshot/</name>
 
 	    </snapshotRepository>
 	</distributionManagement>
