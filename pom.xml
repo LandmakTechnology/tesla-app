@@ -95,13 +95,15 @@
 		
 	    <repository>
 	      <id>nexus</id>
-	      <name>http://54.172.219.171:4000/repository/DJ-Release/</name>
+	      <name>DJ-Release</name>
+	      <url>http://54.172.219.171:4000/repository/DJ-Release/</url>
 
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>http://54.172.219.171:4000/repository/DJ-Snapshot/</name>
+	      <name>DJ-Snapshot</name>
+	      <url>http://54.172.219.171:4000/repository/DJ-Snapshot/</url>
 
 	    </snapshotRepository>
 	</distributionManagement>
