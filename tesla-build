@@ -1,6 +1,6 @@
 - hosts: docker  
   tasks: 
-    - name: copy deployment manifest files   
-      copy: src=app.yml dest=/home/eks/myapp.yml    
-    - name: deploy the web application 
-      shell: kubectl apply -f /home/eks/myapp.yml
+    - name: copy dockerfile  
+      copy: src=Dockerfile dest=/home/eks/Dockerfile    
+    - name: Build Tesla app image
+      shell: docker build -t princebabs/wfapp
