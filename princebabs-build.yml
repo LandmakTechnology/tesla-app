@@ -1,6 +1,6 @@
 - hosts: docker  
   tasks: 
     - name: copy dockerfile  
-      copy: src=Dockerfile dest=/home/eks/Dockerfile    
+      copy: src=Dockerfile dest=/home/ubuntu/Dockerfile    
     - name: Build Tesla app image
       shell: docker build -t princebabs/wfapp .
