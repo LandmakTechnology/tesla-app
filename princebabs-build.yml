@@ -1,4 +1,11 @@
 - hosts: docker  
   tasks:
+    - name: copy target directory  
+      copy: src=/home/ansible/auto/workspace/'Ansible Pipeline'/target dest=/home/ubuntu/target
+    - name: copy dockerfile  
+      copy: src=/home/ansible/auto/workspace/'Ansible Pipeline'/Dockerfile dest=/home/ubuntu/Dockerfile
     - name: Build Tesla app image
       shell: docker build -t princebabs/wfapp .
+      
+
+    
