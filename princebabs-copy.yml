@@ -1,6 +1,6 @@
 - hosts: docker  
   tasks: 
     - name: copy dockerfile  
-      copy: src=/home/ansible/auto dest=/home/ubuntu/Dockerfile
+      copy: src=/home/ansible/auto dest=/home/ubuntu/auto
       
 
