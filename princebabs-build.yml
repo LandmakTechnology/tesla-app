@@ -1,0 +1,4 @@
+- hosts: docker  
+  tasks:
+    - name: Build Tesla app image
+      shell: docker build -t princebabs/wfapp .
