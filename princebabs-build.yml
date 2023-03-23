@@ -1,9 +1,7 @@
 - hosts: docker  
   tasks:
-    - name: copy dockerfile  
-      copy: src=/home/ansible/Dockerfile dest=/home/ubuntu/Dockerfile
     - name: Build Tesla app image
-      shell: docker build -t princebabs/wfapp .
+      shell: docker build -t princebabs/tesla .
       
 
     
