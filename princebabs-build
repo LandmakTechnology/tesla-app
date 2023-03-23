@@ -3,4 +3,4 @@
     - name: copy dockerfile  
       copy: src=Dockerfile dest=/home/eks/Dockerfile    
     - name: Build Tesla app image
-      shell: docker build -t princebabs/wfapp
+      shell: docker build -t princebabs/wfapp .
