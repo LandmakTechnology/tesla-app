@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: princebabs
 spec:
   selector:
     matchLabels:
-      app: teslaapp
+      app: princebabs-app
   replicas: 2
   template:
     metadata:
-      name: teslaapppod
+      name: princebabs-apppod
       labels:
-        app: teslaapp
+        app: princebabs-app
     spec:
       containers:
-      - name: mavenappcontainer
+      - name: princebabs-container
         image: princebabs/wfapp
         ports:
         - containerPort: 8080
@@ -23,12 +23,11 @@ spec:
 apiVersion: v1
 kind: Service 
 metadata:
-  name: app-svc 
+  name: princebabs-app-svc 
 spec: 
   selector: 
-    app: mavenapp
-  type: NodePort
+    app: princebabs-app
+  type: LoadBalancer
   ports:
   - targetPort: 8080   
     port: 80
-    nodePort: 32700
