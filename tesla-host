@@ -1,0 +1,2 @@
+[eks]
+18.206.248.76 ansible_user=eks
