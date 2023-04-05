@@ -3,7 +3,7 @@
   - name: Copy Dockerfile to Docker Server
     copy:
        src: /home/ansible/auto/workspace/'Ansible Pipeline'/Dockerfile
-       dest: /home/ubuntu
+       dest: /home/ubuntu/
   
   - name: Build Tesla app image
     shell: docker build -t princebabs/tesla .
