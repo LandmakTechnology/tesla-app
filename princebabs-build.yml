@@ -6,7 +6,7 @@
        dest: /home/ubuntu/
   
   - name: Build Tesla app image
-    shell: docker build -t princebabs/tesla .
+    command: docker build -t princebabs/tesla .
       
 
     
