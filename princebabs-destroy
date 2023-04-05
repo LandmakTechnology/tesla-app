@@ -1,0 +1,6 @@
+---
+- hosts: eks
+  become: true
+  tasks:
+  - name: Delete all k8s objects
+    command: "kubectl delete -f princebabs.yml"
