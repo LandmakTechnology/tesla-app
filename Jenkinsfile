@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent{
+        label 'Ansible'
+    }
     tools{
         maven 'maven3.9.0'
     }
@@ -27,16 +29,16 @@ pipeline{
             }
         }
         
-        stage ('Transfer to Docker'){
+        stage ('Transfer to Docker and Build Image'){
             steps{
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'Docker', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ubuntu//', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'target/*war'), sshTransfer(cleanRemote: false, excludes: '', execCommand: 'docker build -t princebabs/tesla .', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ubuntu', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'Dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
             }
         }
         
-        //stage ('Deploy wfapp'){
-            //steps{
-                //sh "ansible-playbook princebabs-deploy.yml -i tesla-host"
-        //}
-        //}
+        stage ('Deploy wfapp'){
+            steps{
+                sh "ansible-playbook princebabs-deploy.yml -i tesla-host"
+        }
+        }
     }
 }
