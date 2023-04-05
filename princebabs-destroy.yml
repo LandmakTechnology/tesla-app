@@ -3,4 +3,4 @@
   become: true
   tasks:
   - name: Delete all k8s objects
-    command: "kubectl delete -f /home/ansible/princebabs.yml"
+    command: "kubectl delete -f /home/eks/princebabs.yml"
