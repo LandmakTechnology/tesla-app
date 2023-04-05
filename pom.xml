@@ -95,14 +95,14 @@
 		
 	    <repository>
 	      <id>nexus</id>
-	      <name>DJ-Release</name>
+	      <name>Tesla-Release</name>
 	      <url>http://3.91.239.152:8081/repository/tesla-releases/</url>
 
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>DJ-Snapshot</name>
+	      <name>Tesla-Snapshot</name>
 	      <url>http://3.91.239.152:8081/repository/tesla-snapshot/</url>
 
 	    </snapshotRepository>
