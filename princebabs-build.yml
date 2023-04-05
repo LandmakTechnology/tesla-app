@@ -4,8 +4,8 @@
     copy: src=target/*war dest=/home/ubuntu/
   - name: Copy Dockerfile to Docker Server
     copy: src=Dockerfile dest=/home/ubuntu
-    
-#Enter "docker build -t princebabs/tesla ." into exec command in ssh server setup of pipeline syntax. SSH Publisher plugin is a pre-requisite.
+  - name: Build Image
+    command: "docker build -t princebabs/tesla ." 
       
 
     
