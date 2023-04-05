@@ -1,10 +1,5 @@
 - hosts: docker  
   tasks:
-  - name: Copy Dockerfile to Docker Server
-    copy:
-       src: Dockerfile
-       dest: /home/ubuntu/
-  
   - name: Build Tesla app image
     command: docker build -t princebabs/tesla .
       
