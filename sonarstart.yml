@@ -1,0 +1,7 @@
+---
+- hosts: sonar
+  tasks:
+  - name: Start and enable sonar service
+    shell: /home/sonar/opt/sonarqube-9.1.0.47736/bin/linux-x86-64/sonar.sh start
+  - name: Start and enable sonar service
+    shell: /home/sonar/opt/sonarqube-9.1.0.47736/bin/linux-x86-64/sonar.sh status
