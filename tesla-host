@@ -1,2 +1,5 @@
 [eks]
 44.211.197.81 ansible_user=eks
+
+[docker]
+44.203.97.144 ansible_user=ubuntu
