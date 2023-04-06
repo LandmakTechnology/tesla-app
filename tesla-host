@@ -3,3 +3,6 @@
 
 [docker]
 18.232.250.196 ansible_user=ubuntu
+
+[sonar]
+54.91.175.9 ansible_user=sonar
