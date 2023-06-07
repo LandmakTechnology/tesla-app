@@ -1,11 +1,13 @@
 - hosts: docker  
   tasks:
   - name: Copy webapp to Docker server
-    copy: src=target/*war dest=/home/ubuntu/
+    copy: src=target/ dest=/home/ansible/ #assuming Ansible user has been added on server and configured to be the root in the Ansible host file
   - name: Copy Dockerfile to Docker Server
-    copy: src=Dockerfile dest=/home/ubuntu/
+    copy: src=Dockerfile dest=/home/ansible/
   - name: Build Image
     command: "docker build -t princebabs/tesla ." 
+    
+ #Updated on 06/07/23
       
 
     
