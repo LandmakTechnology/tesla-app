@@ -68,3 +68,15 @@ docker push princebabs/tesla''', execTimeout: 120000, flatten: false, makeEmptyD
         }
     }
 }
+
+#Side note
+ $node(POD_LABEL) {
+  #      stage('Get a Maven project') {
+   #         git 'https://github.com/jenkinsci/kubernetes-plugin.git'
+    #        container('maven') {
+     #           stage('Build a Maven project') {
+      #              sh 'mvn -B -ntp clean install'
+       #         }
+        #    }
+        #}
+  #ref: https://plugins.jenkins.io/kubernetes/
