@@ -1,4 +1,5 @@
-- hosts: eks  
+- hosts: eks
+  become: true
   tasks: 
     - name: copy deployment manifest files   
       copy: src=princebabs.yml dest=/home/ansible/princebabs.yml    
