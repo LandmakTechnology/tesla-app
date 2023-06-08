@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: princebabs-container
-        image: princebabs/wfapp:12
+        image: princebabs/tesla
         ports:
         - containerPort: 8080
         
