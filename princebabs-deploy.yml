@@ -1,6 +1,6 @@
 - hosts: eks  
   tasks: 
     - name: copy deployment manifest files   
-      copy: src=princebabs.yml dest=/home/eks/princebabs.yml    
+      copy: src=princebabs.yml dest=/home/ansible/princebabs.yml    
     - name: deploy the web application 
-      shell: kubectl apply -f /home/eks/princebabs.yml 
+      shell: kubectl apply -f /home/ansible/princebabs.yml 
