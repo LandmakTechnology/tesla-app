@@ -2,6 +2,6 @@
   become: true
   tasks: 
     - name: copy deployment manifest files   
-      copy: src=princebabs.yml dest=/home/ansible/princebabs.yml    
+      copy: src=princebabs.yml dest=/home/ubuntu/princebabs.yml    
     - name: deploy the web application 
-      shell: kubectl apply -f /home/ansible/princebabs.yml 
+      shell: kubectl apply -f /home/ubuntu/princebabs.yml 
