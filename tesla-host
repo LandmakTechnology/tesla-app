@@ -2,7 +2,7 @@
 3.85.122.240 ansible_user=eks
 
 [docker]
-18.232.250.196 ansible_user=ubuntu
+3.23.1.200 ansible_user=ansible
 
 [sonar]
 34.207.159.39 ansible_user=sonar
