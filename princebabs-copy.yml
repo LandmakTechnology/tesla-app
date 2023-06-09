@@ -1,6 +1,7 @@
-- hosts: docker  
+- hosts: eks
+  become: true
   tasks: 
-    - name: copy dockerfile  
-      copy: src=/home/ansible/auto dest=/home/ubuntu/auto
+    - name: copy deployment manifest files   
+      copy: src=princebabs.yml dest=/home/ubuntu/princebabs.yml 
       
 
