@@ -1,0 +1,32 @@
+node{
+  def mavenHome = tool name: 'maven3.9.2'
+  stage('1.GetCode'){
+    git "https://github.com/joflow05/tesla-app"
+    //sh "git clone https://github.com/LandmakTechnology/maven-web-application"
+    //bat "git clone https://github.com/LandmakTechnology/maven-web-application"
+  }
+  stage('2.Build'){
+    sh "${mavenHome}/bin/mvn package"
+  }
+  stage('3.codeQualityAnalysis'){
+    sh "${mavenHome}/bin/mvn sonar:sonar"
+  }
+  stage('4.upload'){
+    //sh "${mavenHome}/bin/mvn deploy"
+  }
+  stage('5.deploy2UAT'){
+   deploy adapters: [tomcat9(credentialsId: 'tomcat-credential', path: '', url: 'http://54.165.154.95:8177/')], contextPath: null, war: 'target/*war'  
+  }
+  stage('6.Approval'){
+    sh "echo 'apps ready for review' "
+    timeout(time:5, unit:'HOURS') {
+    input message: 'Application ready for deployment, Please review and approve'
+      }
+
+  }
+  stage('7.production'){
+    deploy adapters: [to}mcat9(credentialsId: 'tomcat-credential', path: '', url: 'http://54.165.154.95:8177/')], contextPath: null, war: 'target/*war'  }
+  stage('8.notification'){
+   emailextrecipients([buildUser(), developers()])
+  }
+
