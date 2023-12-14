@@ -20,13 +20,13 @@ pipeline{
          stage('Build Image'){
             steps{
                 sh "echo build image"
-                sh "docker build -t princebabs/arsenal:v1 ."
+                sh "docker build -t princebabs/konoha:v1 ."
             }
         }
         stage('Push to DockerHub'){
             steps{
               sh "echo 'Push Image'"
-              sh 'docker push princebabs/arsenal:v1'
+              sh 'docker push princebabs/konoha:v1'
                 
             }
         }
