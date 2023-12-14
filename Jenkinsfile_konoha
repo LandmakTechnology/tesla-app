@@ -12,15 +12,15 @@ pipeline{
         //}
         stage('Build and test code'){
             steps{
-                sh "echo build image"
-                sh "mvn clean package"
-                sh "mvn sonar:sonar"
+                sh "echo build and test konoha.war"
+                sh 'mvn clean package'
+                sh 'mvn sonar:sonar'
             }
         }
          stage('Build Image'){
             steps{
                 sh "echo build image"
-                sh "docker build -t princebabs/konoha:v1 ."
+                sh 'docker build -t princebabs/konoha:v1 .'
             }
         }
         stage('Push to DockerHub'){
