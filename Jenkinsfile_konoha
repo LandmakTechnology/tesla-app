@@ -10,11 +10,10 @@ pipeline{
         //        git 'https://github.com/Ohubabs/tesla-app.git'
         //    }
         //}
-        stage('Build and test code'){
+        stage ('Build Webapp'){
             steps{
-                sh "echo build and test konoha.war"
-                sh 'mvn clean package'
-                sh 'mvn sonar:sonar'
+                sh "echo 'Clean Source Code and Build Webapp'"
+                sh "mvn clean package"
             }
         }
          stage('Build Image'){
