@@ -2,6 +2,9 @@ pipeline{
     agent { 
         label 'docker'
   }
+  tools{
+        maven 'maven3.9.6'
+    }
     stages{
         //stage('Clone Code'){
         //    steps{
