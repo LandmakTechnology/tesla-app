@@ -1,0 +1,28 @@
+pipeline{
+    agent { 
+        label 'terra'
+  }
+    stages{
+        stage('Clone Code'){
+            steps{
+                sh "echo cloning code"
+                sh "echo clone code complete"
+                git 'https://github.com/Ohubabs/arsenal.git'
+            }
+        }
+        stage('Initialize Terraform'){
+            steps{
+                sh "echo 'Deploy Tesla To Cluster'"
+                sh "terraform init"
+            }
+        }
+        stage('Deploy Tesla To EKS'){
+            steps{
+                sh "echo 'Deploy Tesla To Cluster'"
+                sh "terraform validate"
+                sh "terraform plan"
+                sh "terraform apply --auto-approve" //Swap "apply" with "destroy" when deleting resources
+            }
+        }
+    }
+}
