@@ -1,0 +1,14 @@
+pipeline{
+    agent { 
+        label 'terra'
+  }
+    stages{
+        stage('Destroy Konoha Web Server Today'){
+            steps{
+                sh "echo 'Deploy Tesla To Cluster'"
+                sh "terraform init"
+                sh "terraform destroy --auto-approve" 
+            }
+        }
+    }
+}
