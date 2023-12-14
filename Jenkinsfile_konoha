@@ -3,7 +3,7 @@ pipeline{
         label 'docker'
   }
   tools{
-        maven 'maven3.9.6'
+        maven 'maven'
     }
     stages{
         //stage('Clone Code'){
