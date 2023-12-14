@@ -3,13 +3,13 @@ pipeline{
         label 'docker'
   }
     stages{
-        stage('Clone Code'){
-            steps{
-                sh "echo cloning code"
-                sh "echo clone code complete"
-                git 'https://github.com/Ohubabs/arsenal.git'
-            }
-        }
+        //stage('Clone Code'){
+        //    steps{
+        //        sh "echo cloning code"
+        //        sh "echo clone code complete"
+        //        git 'https://github.com/Ohubabs/tesla-app.git'
+        //    }
+        //}
         stage('Build and test code'){
             steps{
                 sh "echo build image"
