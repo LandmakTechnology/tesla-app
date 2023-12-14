@@ -17,6 +17,7 @@ pipeline{
             steps{
                 sh "echo 'Clean Source Code and Build Webapp'"
                 sh "mvn clean package"
+                sh "mvn sonar:sonar"
             }
         }
          stage('Build Image'){
