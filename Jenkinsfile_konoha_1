@@ -7,7 +7,7 @@ pipeline{
         //    steps{
         //        sh "echo cloning code"
         //        sh "echo clone code complete"
-        //        git 'https://github.com/Ohubabs/arsenal.git'
+        //        git 'https://github.com/Ohubabs/tesla-app.git'
         //    }
         //}
         stage('Initialize Terraform'){
