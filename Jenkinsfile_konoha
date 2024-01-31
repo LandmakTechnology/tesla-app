@@ -1,0 +1,37 @@
+pipeline{
+    agent { 
+        label 'docker'
+  }
+  tools{
+        maven 'maven'
+    }
+    stages{
+        //stage('Clone Code'){
+        //    steps{
+        //        sh "echo cloning code"
+        //        sh "echo clone code complete"
+        //        git 'https://github.com/Ohubabs/tesla-app.git'
+        //    }
+        //}
+        stage ('Build Webapp'){
+            steps{
+                sh "echo 'Clean Source Code and Build Webapp'"
+                sh "mvn clean package"
+                sh "mvn sonar:sonar"
+            }
+        }
+         stage('Build Image'){
+            steps{
+                sh "echo build image"
+                sh 'docker build -t princebabs/konoha:v1 .'
+            }
+        }
+        stage('Push to DockerHub'){
+            steps{
+              sh "echo 'Push Image'"
+              sh 'docker push princebabs/konoha:v1'
+                
+            }
+        }
+    }
+}

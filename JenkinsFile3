@@ -1,0 +1,53 @@
+pipeline{
+    agent{
+        label 'Ansible'
+    }    
+    tools{
+        maven 'Maven'
+    }
+    
+    stages{
+        
+        stage ('Clone Git Repo'){
+           steps{
+              sh "echo 'Cloning Git Repo'"
+              git 'https://github.com/Ohubabs/tesla-app.git'
+            }
+        }
+        
+        stage ('Build Webapp'){
+            steps{
+                sh "echo 'Clean Source Code and Build Webapp'"
+                sh "mvn clean package"
+            }
+        }
+        
+        stage ('Transfer to Docker and Build Image'){
+            steps{
+                sh "echo 'Transfer to Docker and Build Image'"
+                sh "ansible-playbook princebabs-build.yml"
+            }
+        }
+        
+        stage ('login to DockerHub and Push Image'){
+            steps{
+                sh "echo 'login to DockerHub and Push Image'"
+                sh "ansible-playbook princebabs-push.yml"
+            }
+        }
+        
+        stage ('Copy Deployment file to EKS server'){
+            steps{
+                sh "echo 'Deploy to Cluster'"
+                sh "ansible-playbook princebabs-copy.yml"
+            }
+        }
+        
+        stage ('Deploy App'){
+            steps{
+                sh "echo 'Deploy to Cluster'"
+                sh 'ansible eks -a "kubectl apply -f princebabs.yml"'
+            }
+        }
+    }
+}

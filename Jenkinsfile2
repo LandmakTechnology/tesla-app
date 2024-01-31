@@ -1,0 +1,82 @@
+pipeline{
+    agent{
+        label 'Ansible'
+    }    
+    tools{
+        maven 'maven3.9.0'
+    }
+    
+    stages{
+        
+        stage ('Clone Git Repo'){
+           steps{
+              sh "echo 'Cloning Git Repo'"
+              git 'https://github.com/Ohubabs/tesla-app.git'
+            }
+        }
+        
+        stage ('Build Webapp'){
+            steps{
+                sh "echo 'Clean Source Code and Build Webapp'"
+                sh "mvn clean package"
+            }
+        }
+        
+        stage ('Start SonarQube'){
+            steps{
+                sh "ansible-playbook sonarstart.yml -i tesla-host"
+            }
+        }
+        
+        stage ('Quality Testing'){
+            steps{
+                sh "echo 'Clean Source Code and Build Webapp'"
+                sh "mvn sonar:sonar"
+            }
+        }
+        
+        stage ('Backup Artifact'){
+            steps{
+                sh "echo 'Backup to Nexus'"
+                sh "mvn deploy"
+            }
+        }
+        
+        stage ('Transfer to Docker and Build Image'){
+            steps{
+                sh "echo 'Transfer to Docker and Build Image"
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'Ansible', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ansible//auto', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'target/*war'), sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook princebabs-build.yml -i tesla-host', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ansible//auto', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'Dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+            }
+        }
+        
+        stage ('Log into DockerHub and Push Image'){
+            steps{
+                sh "echo 'Log into DockerHub and Push Image'"
+                withCredentials([usernamePassword(credentialsId: 'DockerHub-Credentials', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'Docker', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker login -u DOCKERHUB_USERNAME -p DOCKERHUB_PASSWORD
+docker push princebabs/tesla''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+                }
+            }
+        }
+        
+        
+        stage ('Deploy App to EKS Cluster'){
+            steps{
+                sh "echo 'Deploy App to EKS Cluster'"
+                sh "ansible-playbook princebabs-deploy.yml -i tesla-host"
+        }
+        }
+    }
+}
+
+#Side note
+ $node(POD_LABEL) {
+  #      stage('Get a Maven project') {
+   #         git 'https://github.com/jenkinsci/kubernetes-plugin.git'
+    #        container('maven') {
+     #           stage('Build a Maven project') {
+      #              sh 'mvn -B -ntp clean install'
+       #         }
+        #    }
+        #}
+  #ref: https://plugins.jenkins.io/kubernetes/

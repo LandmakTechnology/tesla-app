@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: princebabs
+spec:
+  selector:
+    matchLabels:
+      app: princebabs-app
+  replicas: 2
+  template:
+    metadata:
+      name: princebabs-apppod
+      labels:
+        app: princebabs-app
+    spec:
+      containers:
+      - name: princebabs-container
+        image: princebabs/tesla
+        ports:
+        - containerPort: 8080
+        
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: princebabs-app-svc 
+spec: 
+  selector: 
+    app: princebabs-app
+  type: LoadBalancer
+  ports:
+  - targetPort: 8080   
+    port: 80
